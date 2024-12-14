@@ -1,34 +1,40 @@
 {
-  "fileTypes": [
-    "js",
-    "jsx",
-    "ts",
-    "tsx",
-    "html"
-  ],
-  "injectionSelector": "L:source.js -comment -string, L:source.js -comment -string, L:source.jsx -comment -string, L:source.js.jsx -comment -string, L:source.ts -comment -string, L:source.tsx -comment -string",
-  "injections": {
-    "L:source": {
-      "patterns": [
-        {
-          "match": "<",
-          "name": "invalid.illegal.bad-angle-bracket.html"
-        }
-      ]
-    }
-  },
+  "scopeName": "inline.template-literals",
+  "injectionSelector": "L:source.js -comment -string, L:source.jsx -comment -string, L:source.ts -comment -string, L:source.tsx -comment -string",
   "patterns": [
     {
-      "begin": "\\s*(?:html)?(`|\\(`|\\[`)",
-      "beginCaptures": {
-        "1": {
-          "name": "keyword.operator.assignment.js"
-        }
-      },
-      "end": "(`|`\\)|`\\])",
+      "name": "string.template.js",
+      "begin": "(?:html)?(`)",
+      "end": "`",
       "patterns": [
         {
-          "include": "source.ts#template-substitution-element"
+          "include": "#template-substitution"
+        },
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    },
+    {
+      "name": "string.template.js",
+      "begin": "\\(`",
+      "end": "`\\)",
+      "patterns": [
+        {
+          "include": "#template-substitution"
+        },
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    },
+    {
+      "name": "string.template.js",
+      "begin": "\\[`",
+      "end": "`\\]",
+      "patterns": [
+        {
+          "include": "#template-substitution"
         },
         {
           "include": "text.html.basic"
@@ -36,5 +42,26 @@
       ]
     }
   ],
-  "scopeName": "inline.template-literals"
+  "repository": {
+    "template-substitution": {
+      "name": "expression.embedded.js",
+      "begin": "\\${",
+      "end": "}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template-expression.begin.js"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template-expression.end.js"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ts"
+        }
+      ]
+    }
+  }
 }
