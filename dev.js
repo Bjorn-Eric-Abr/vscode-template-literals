@@ -1,4 +1,24 @@
-const arrowFunction = ({value}) => `
+$(document.body).on('keydown', '#SEARCH', async (e) => {
+    const res = await posted(`/some/${parameter}/search`, { value })
+    if (handleErr(res)) return
+
+    render(res)
+})
+
+html`<div class="some-class">
+    <style>
+        h1 {
+            color: red;
+        }
+    </style>
+    <h1>Hello World!</h1>
+    <script>
+        console.log('Hello World')
+    </script>
+    <div>${value}</div>
+</div>`
+
+const arrowFunction = ({ value }) => `
     <div class="some-class">
         <style>h1{color: lime;}</style>
         <h1>Hello World!</h1>
@@ -16,7 +36,7 @@ const assignment = `
     </div>
 `
 
-const tagFunction = anyTagFn `
+const tagFunction = anyTagFn`
     <div class="some-class">
         <style>h1{color: pink;}</style>
         <h1>Hello World!</h1>
@@ -34,7 +54,7 @@ const commentFollowedBySpace = /*any-comment*/ `
     </div>
 `
 
-const disableWithCommentNoSpace = /**/`
+const disableWithCommentNoSpace = /**/ `
     <div class="some-class">
         <style>h1{color: lime;}</style>
         <h1>Hello World!</h1>
@@ -42,19 +62,16 @@ const disableWithCommentNoSpace = /**/`
         <div>${value}</div>
     </div>
 `
-const disableInlineWithCommentNoSpace = /**/`<This is a regular string> ${abc}`
-
+const disableInlineWithCommentNoSpace = /**/ `<This is a regular string> ${abc}`
 
 const regularTLString = `A string without markup will be the color of HTML text <> ${abc}`
 
 console.log(`<h1>Hello World!</h1>`)
 
-console.log( 
-    `<h1>Hello World!</h1>`
-)
+console.log(`<h1>Hello World!</h1>`)
 
 dotNotation[`<p>Test.</p>`]
 
 {
-    `<span>VSCode Template Literals</span>`
+    ;`<span>VSCode Template Literals</span>`
 }
