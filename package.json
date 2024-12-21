@@ -3,10 +3,11 @@
     "name": "vscode-template-literals",
     "displayName": "Template Literals",
     "description": "Template Literals Syntax Highlighting for HTML and SVG (Without the need of a tag function)",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "icon": "lambdascript.png",
     "scripts": {
-        "publish": "vsce publish"
+        "publish": "vsce publish",
+        "build": "vsce package"
     },
     "galleryBanner": {
         "color": "#a099ff",
@@ -55,5 +56,8 @@
                 }
             }
         ]
+    },
+    "devDependencies": {
+        "vsce": "^2.15.0"
     }
 }
