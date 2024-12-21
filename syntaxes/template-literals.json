@@ -4,6 +4,19 @@
   "patterns": [
     {
       "name": "string.template.js",
+      "begin": "\\w+\\s*\\(`",
+      "end": "`",
+      "patterns": [
+        {
+          "include": "#template-substitution"
+        },
+        {
+          "include": "text.html.basic"
+        }
+      ]
+    },
+    {
+      "name": "string.template.js",
       "begin": "(?:html)?(`)",
       "end": "`",
       "patterns": [
